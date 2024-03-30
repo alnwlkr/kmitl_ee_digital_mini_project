@@ -58,7 +58,7 @@ If you use a typical Arduino Nano (without RF Module integrated.) you need to co
 NOTE : If you use a Arduino Nano RF integrated,  
 change ```RF24 radio(8,10);``` to ```RF24 radio(10,9);```.  
 Vice versa if you use an Arduino Nano with nRF24L01 external module.
-change ```RF24 radio(10,9);``` to ```RF24 radio(8ม10);```.  
+change ```RF24 radio(10,9);``` to ```RF24 radio(8;10);```.  
 
 If It's doesn't work IDK.
 #### Part 2 : RC Reciever (Car)
