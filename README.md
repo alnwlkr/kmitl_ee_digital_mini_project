@@ -58,10 +58,75 @@ If you use a typical Arduino Nano (without RF Module integrated.) you need to co
 NOTE : If you use a Arduino Nano RF integrated,  
 change ```RF24 radio(8,10);``` to ```RF24 radio(10,9);```.  
 Vice versa if you use an Arduino Nano with nRF24L01 external module.
-change ```RF24 radio(10,9);``` to ```RF24 radio(8;10);```.  
+change ```RF24 radio(10,9);``` to ```RF24 radio(8ม10);```.  
 
 If It's doesn't work IDK.
 #### Part 2 : RC Reciever (Car)
+
+| L298n Motor Driver | Arduino Nano |
+|--------------------|--------------|
+| ENA                | D3           |
+| IN1                | D4           |
+| IN2                | D5           |
+| IN3                | D6           |
+| IN4                | D7           |
+| ENB                | D9           |
+| OUT1               | -            |
+| OUT2               | -            |
+| OUT3               | -            |
+| OUT4               | -            |
+| VS (+12V)          | -            |
+| GND                | GND          |
+| VSS (+5V)          | Vin          |
+
+| L298n Motor Driver | Power Supply |
+|--------------------|--------------|
+| ENA                |              |
+| IN1                |              |
+| IN2                |              |
+| IN3                |              |
+| IN4                |              |
+| ENB                |              |
+| OUT1               |              |
+| OUT2               |              |
+| OUT3               |              |
+| OUT4               |              |
+| VS (+12V)          | +12V         |
+| GND                | GND          |
+| VSS (+5V)          |              |
+
+Note : When the motor is running and the power supply is a battery, It will make voltage drop and motor may not run anymore. The voltage regulator is recommended (may be a boost converter or something else).
+
+The L298N Motor Driver can be supply between 5 to 35 VDC, I recommend you to connect the supply higher than 9V because the 5V Pin will accurate to 5V.
+
+| L298n Motor Driver | Motor1 | Motor2 | Motor3 | Motor4 |
+|--------------------|--------|--------|--------|--------|
+| ENA                |        |        |        |        |
+| IN1                |        |        |        |        |
+| IN2                |        |        |        |        |
+| IN3                |        |        |        |        |
+| IN4                |        |        |        |        |
+| ENB                |        |        |        |        |
+| OUT1               | +      | -      |        |        |
+| OUT2               | -      | +      |        |        |
+| OUT3               |        |        | -      | +      |
+| OUT4               |        |        | +      | -      |
+| VS (+12V)          |        |        |        |        |
+| GND                |        |        |        |        |
+| VSS (+5V)          |        |        |        |        |
+
+NOTE : the wiring diagram is up to the code logic, test it by yourself and modify the code to make it walk as you wish. I recommended you to connect the motor to breadbroad for an easier cable swapping.
+
+| nRF24L01 | Arduino Nano |
+|----------|--------------|
+| VCC      | 3.3V         |
+| CSN      | D10          |
+| MOSI     | D11          |
+| IRQ      | -            |
+| MISO     | D12          |
+| SCK      | D13          |
+| CE       | D8           |
+| GND      | GND          |
 ## Installation
 
 After connect all component together as above. You can simply plug in Arduino Nano to your computer and upload ```TRANSMITTER_CODE.ino``` to your Arduino Nano using Arduino IDE fo the transmitter.
